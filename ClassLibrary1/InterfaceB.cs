@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JBService.IOC
+namespace ClassLibrary1
 {
-    public class Class1
+    public interface InterfaceB
     {
+        void RunB();
     }
 }
