@@ -12,10 +12,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            ContainerCreator containerCreator = new ContainerCreator();
-            containerCreator.CreateBuilder();
+            ContainerCreator containerCreator = new ContainerCreator();//建立Creator
+            containerCreator.CreateBuilder();//建立Builder
             containerCreator.LoadLibrary();//載入dll=>class,interface
-            var assemblyInfoList = new List<JBService.IOC.AssemblyImplementInfo>();
+            var assemblyInfoList = new List<JBService.IOC.AssemblyImplementInfo>();//設定要註冊的interface及其對應實作
             assemblyInfoList.Add(new AssemblyImplementInfo
             {
                 ImplementClassInfo = new AssemblyInfo { ClassName = "ImplementA.ImpA1", Path = @"ImplementA.dll" },
@@ -33,12 +33,11 @@ namespace ConsoleApp1
             });
             containerCreator.RegisterAssemblyFromInfo(assemblyInfoList);//選擇模組
 
+            //手動指定選擇的contructor
             containerCreator.builder.Register<ClassLibrary1.InterfaceB>(containner => new ImplementA.ImpB(containner.Resolve<ClassLibrary1.InterfaceC>()));
 
             var container = containerCreator.BuilderContainer();//建立類別容器
 
-            //container.ComponentRegistry.IsRegistered()
-            //var service = container.Resolve<ClassLibrary1.InterfaceA>();
             var service = containerCreator.GetService<ClassLibrary1.InterfaceA>();//注入
 
             service.RunA();//叫用

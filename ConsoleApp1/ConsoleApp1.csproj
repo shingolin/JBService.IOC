@@ -54,17 +54,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
-      <Project>{9e41c424-24f3-4fe2-8186-99f36c0a4c6c}</Project>
-      <Name>ClassLibrary1</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImplementA\ImplementA.csproj">
-      <Project>{b444b360-af12-430b-ad91-f2077dba5a65}</Project>
-      <Name>ImplementA</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImpTest2\ImpTest2.csproj">
-      <Project>{3d80dab4-fe51-42c6-b13b-57c23633183e}</Project>
-      <Name>ImpTest2</Name>
+    <ProjectReference Include="..\JBHRIS.HRM.ABSENT\JBHRIS.HRM.ABSENT.csproj">
+      <Project>{33e6a58d-e309-4e79-9df6-67c09ff1b1c8}</Project>
+      <Name>JBHRIS.HRM.ABSENT</Name>
     </ProjectReference>
     <ProjectReference Include="..\JBService.IOC\JBService.IOC.csproj">
       <Project>{77ed5b01-5f2d-4203-8051-42424f59abad}</Project>

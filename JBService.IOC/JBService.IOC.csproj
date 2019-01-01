@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AssemblyImplementInfo.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ConnectionHelper.cs" />
     <Compile Include="ContainerCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
