@@ -10,7 +10,6 @@ namespace JBHRIS.HRM.ABSENT.SERVICE
     {
         private IAbsentServiceRepository _absentServiceRepository;
         private IAbsentServiceBll _absentServiceBll;
-
         public AbsentService(IAbsentServiceRepository absentServiceRepository,IAbsentServiceBll absentServiceBll)
         {
             _absentServiceRepository = absentServiceRepository;

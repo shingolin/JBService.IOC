@@ -18,32 +18,35 @@ namespace ConsoleApp1
             var assemblyInfoList = new List<JBService.IOC.AssemblyImplementInfo>();//設定要註冊的interface及其對應實作
             assemblyInfoList.Add(new AssemblyImplementInfo
             {
-                ImplementClassInfo = new AssemblyInfo { ClassName = "ImplementA.ImpA1", Path = @"ImplementA.dll" },
-                InterfaceInfo = new AssemblyInfo { ClassName = "ClassLibrary1.InterfaceA", Path = @"ClassLibrary1.dll" },
+                ImplementClassInfo = new AssemblyInfo { ClassName = "JBHRIS.HRM.ABSENT.SERVICE.AbsentService", Path = @"JBHRIS.HRM.ABSENT.SERVICE.dll" },
+                InterfaceInfo = new AssemblyInfo { ClassName = "JBHRIS.HRM.ABSENT.IAbsentService", Path = @"JBHRIS.HRM.ABSENT.dll" },
             });
             assemblyInfoList.Add(new AssemblyImplementInfo
             {
-                ImplementClassInfo = new AssemblyInfo { ClassName = "ImplementA.ImpB", Path = @"ImplementA.dll" },
-                InterfaceInfo = new AssemblyInfo { ClassName = "ClassLibrary1.InterfaceB", Path = @"ClassLibrary1.dll" },
+                ImplementClassInfo = new AssemblyInfo { ClassName = "JBHRIS.HRM.ABSENT.DAL.AbsentServiceRepository", Path = @"JBHRIS.HRM.ABSENT.DAL.dll" },
+                InterfaceInfo = new AssemblyInfo { ClassName = "JBHRIS.HRM.ABSENT.SERVICE.IAbsentServiceRepository", Path = @"JBHRIS.HRM.ABSENT.SERVICE.dll" },
             });
             assemblyInfoList.Add(new AssemblyImplementInfo
             {
-                ImplementClassInfo = new AssemblyInfo { ClassName = "ImpTest2.Imp3", Path = @"ImpTest2.dll" },
-                InterfaceInfo = new AssemblyInfo { ClassName = "ClassLibrary1.InterfaceC", Path = @"ClassLibrary1.dll" },
+                ImplementClassInfo = new AssemblyInfo { ClassName = "JBHRIS.HRM.ABSENT.DAL.TestAbsentServiceBll", Path = @"JBHRIS.HRM.ABSENT.DAL.dll" },
+                InterfaceInfo = new AssemblyInfo { ClassName = "JBHRIS.HRM.ABSENT.SERVICE.IAbsentServiceBll", Path = @"JBHRIS.HRM.ABSENT.SERVICE.dll" },
             });
+            var helper = new JBService.IOC.ConnectionHelper(Properties.Settings.Default.MyConnectionString);
+            containerCreator.builder.Register<JBService.IOC.ConnectionHelper>(p=>helper).As<JBService.IOC.ConnectionHelper>();
             containerCreator.RegisterAssemblyFromInfo(assemblyInfoList);//選擇模組
 
             //手動指定選擇的contructor
             //containerCreator.builder.Register<ClassLibrary1.InterfaceB>(containner => new ImplementA.ImpB(containner.Resolve<ClassLibrary1.InterfaceC>()));
 
-            //var container = containerCreator.BuilderContainer();//建立類別容器
-
-            //var service = containerCreator.GetService<ClassLibrary1.InterfaceA>();//注入
-
+            var container = containerCreator.BuilderContainer();//建立類別容器
+            var repo = containerCreator.GetService<JBService.IOC.ConnectionHelper>();
+            var service = containerCreator.GetService<JBHRIS.HRM.ABSENT.IAbsentService>();//注入
+            var data = service.GetEntitles("110406", "W", new DateTime(2018, 12, 31), new DateTime(2018, 12, 31));
             //service.RunA();//叫用
 
             //var serviceB = containerCreator.GetService<ClassLibrary1.InterfaceB>();
             //serviceB.RunB();
+
 
             Console.Read();
         }
