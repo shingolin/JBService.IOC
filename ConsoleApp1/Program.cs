@@ -34,16 +34,16 @@ namespace ConsoleApp1
             containerCreator.RegisterAssemblyFromInfo(assemblyInfoList);//選擇模組
 
             //手動指定選擇的contructor
-            containerCreator.builder.Register<ClassLibrary1.InterfaceB>(containner => new ImplementA.ImpB(containner.Resolve<ClassLibrary1.InterfaceC>()));
+            //containerCreator.builder.Register<ClassLibrary1.InterfaceB>(containner => new ImplementA.ImpB(containner.Resolve<ClassLibrary1.InterfaceC>()));
 
-            var container = containerCreator.BuilderContainer();//建立類別容器
+            //var container = containerCreator.BuilderContainer();//建立類別容器
 
-            var service = containerCreator.GetService<ClassLibrary1.InterfaceA>();//注入
+            //var service = containerCreator.GetService<ClassLibrary1.InterfaceA>();//注入
 
-            service.RunA();//叫用
+            //service.RunA();//叫用
 
-            var serviceB = containerCreator.GetService<ClassLibrary1.InterfaceB>();
-            serviceB.RunB();
+            //var serviceB = containerCreator.GetService<ClassLibrary1.InterfaceB>();
+            //serviceB.RunB();
 
             Console.Read();
         }
